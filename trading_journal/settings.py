@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'utility',
     'pandas',
     'user_stuff',
+    'news',
+    'nltk',
 ]
 
 MIDDLEWARE = [
@@ -127,3 +129,6 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+MARKETAUX_API_KEY = "iJQNzKUed5cENRpztpNJFZvqESF6rSsWlhJPXsrM"
+
