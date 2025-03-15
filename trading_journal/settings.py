@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'trades',
     'monitoring',
+    'utility',
+    'pandas',
 ]
 
 MIDDLEWARE = [

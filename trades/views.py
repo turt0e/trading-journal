@@ -53,3 +53,5 @@ class DeleteTrade(APIView):
             return Response({"message": "Trade deleted successfully."}, status=status.HTTP_204_NO_CONTENT)
         except Trade.DoesNotExist:
             return Response({"message": "Trade not found."}, status=status.HTTP_404_NOT_FOUND)
+        
+        
