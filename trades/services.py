@@ -1,5 +1,4 @@
-# trades/services.py
-from django.db.models import Sum, Count, Avg, Max, Min
+from django.db.models import Sum, Count, Avg
 from .models import Trade
 
 def calculate_trade_summary():
@@ -15,7 +14,15 @@ def calculate_trade_summary():
     }
 
 def calculate_trade_performance():
-    win_rate = Trade.objects.filter(pnl__gt=0).count() / Trade.objects.count() * 100
+    total_trades = Trade.objects.count()
+    if total_trades == 0:
+        return {
+            "win_rate": 0,
+            "average_profit": 0,
+            "average_loss": 0
+        }
+    
+    win_rate = Trade.objects.filter(pnl__gt=0).count() / total_trades * 100
     avg_profit = Trade.objects.filter(pnl__gt=0).aggregate(Avg('pnl'))['pnl__avg'] or 0
     avg_loss = Trade.objects.filter(pnl__lt=0).aggregate(Avg('pnl'))['pnl__avg'] or 0
     return {

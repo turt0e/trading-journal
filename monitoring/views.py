@@ -92,11 +92,9 @@ class BacktestView(APIView):
         )
         backtest_run.save()
 
-        # Serialize and return the backtest results and trades
+        # Serialize and return only the backtest results
         backtest_run_serializer = BacktestRunSerializer(backtest_run)
-        trade_serializer = TradeSerializer(trades, many=True)
 
         return Response({
-            'backtest_results': backtest_run_serializer.data,
-            'trades': trade_serializer.data
+            'backtest_results': backtest_run_serializer.data
         }, status=status.HTTP_201_CREATED)

@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'monitoring',
     'utility',
     'pandas',
+    'user_stuff',
 ]
 
 MIDDLEWARE = [
